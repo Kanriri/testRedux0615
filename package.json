@@ -7,7 +7,7 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint --fix --ext .js ./app"
   },
   "dependencies": {
     "@babel/plugin-proposal-decorators": "7.4.4",

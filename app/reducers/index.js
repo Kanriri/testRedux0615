@@ -3,6 +3,6 @@ import { combineReducers } from 'redux';
 import { CountReducer } from './CountReducer';
 
 const rootReducer = combineReducers({
-	Count: CountReducer
+	Count: CountReducer,
 });
 export default rootReducer;

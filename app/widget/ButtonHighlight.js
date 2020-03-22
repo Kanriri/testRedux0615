@@ -1,20 +1,15 @@
 'use strict';
 import React, { Component } from 'react';
-import {
-	Text,
-	StyleSheet,
-	TouchableHighlight,
-	Dimensions
-} from 'react-native';
+import { Text, StyleSheet, TouchableHighlight, Dimensions } from 'react-native';
 
-const { width, height } = Dimensions.get('screen');
+const { width } = Dimensions.get('screen');
 
 export default class ButtonHighlight extends Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 		this.state = {
 			disabled: false,
-			textColor: this.props.underlayTextColor || '#999999'
+			textColor: this.props.underlayTextColor || '#999999',
 		};
 	}
 
@@ -24,27 +19,46 @@ export default class ButtonHighlight extends Component {
 	};
 
 	enable = () => {
-		this.setState({ disabled: false, textColor: this.props.underlayTextColor || '#999999' });
+		this.setState({
+			disabled: false,
+			textColor: this.props.underlayTextColor || '#999999',
+		});
 	};
 
 	disable = () => {
 		this.setState({
 			disabled: true,
-			textColor: this.props.underlayTextColor || '#999999'
+			textColor: this.props.underlayTextColor || '#999999',
 		});
 	};
 
-	render () {
-		const { underlayColor, title, buttonStyle, titleStyle, disabled } = this.props;
+	render() {
+		const {
+			underlayColor,
+			title,
+			buttonStyle,
+			titleStyle,
+			disabled,
+		} = this.props;
 		return (
 			<TouchableHighlight
-				style={[CustomBtStyles.button, buttonStyle, { backgroundColor: 'white' }]}
+				style={[
+					CustomBtStyles.button,
+					buttonStyle,
+					...{ backgroundColor: 'white' },
+				]}
 				activeOpacity={0.5}
 				disabled={this.state.disabled || disabled}
 				onPress={this.onPress}
 				underlayColor={underlayColor || '#e5e5e5'}>
 				<Text
-					style={[CustomBtStyles.buttonTitle, titleStyle, (this.state.disabled || disabled) ? { color: this.state.textColor } : null]}>
+					style={[
+						CustomBtStyles.buttonTitle,
+						titleStyle,
+						this.state.disabled || disabled
+							? { color: this.state.textColor }
+							: null,
+					]}>
 					{title}
 				</Text>
 			</TouchableHighlight>
@@ -60,7 +74,7 @@ const CustomBtStyles = StyleSheet.create({
 		width: 13,
 		height: 13,
 		borderRadius: 13 / 2,
-		backgroundColor: '#ff0000'
+		backgroundColor: '#ff0000',
 	},
 	button: {
 		width: width - 60,
@@ -69,13 +83,13 @@ const CustomBtStyles = StyleSheet.create({
 		overflow: 'visible',
 		padding: 1,
 		alignItems: 'center',
-		justifyContent: 'center'
+		justifyContent: 'center',
 	},
 	buttonTitle: {
 		backgroundColor: 'transparent',
 		textAlign: 'center',
 		color: '#4b4b4b',
-		fontSize: 34
+		fontSize: 34,
 	},
 	initStyle: {
 		marginTop: 0,
@@ -87,6 +101,6 @@ const CustomBtStyles = StyleSheet.create({
 		bottom: 0,
 		left: 0,
 		backgroundColor: 'transparent',
-		borderColor: 'transparent'
-	}
+		borderColor: 'transparent',
+	},
 });

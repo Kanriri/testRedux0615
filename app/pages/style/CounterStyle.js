@@ -1,9 +1,7 @@
 /**
  * Created by tiancheng on 2019/4/22.
  */
-import {
-	StyleSheet,
-} from 'react-native';
+import { StyleSheet } from 'react-native';
 
 const CounterStyle = StyleSheet.create({
 	// 整体居中
@@ -16,7 +14,7 @@ const CounterStyle = StyleSheet.create({
 	counterTxt: {
 		color: '#333333',
 		fontSize: 30,
-	}
+	},
 });
 
 export default CounterStyle;

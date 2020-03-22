@@ -7,7 +7,7 @@ import Counter from './pages/Counter';
 let store = configureStore();
 
 export default class Root extends Component {
-	render () {
+	render() {
 		return (
 			<Provider store={store}>
 				<Counter />

@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 
-import {
-	View,
-	Text
-} from 'react-native';
+import { View, Text } from 'react-native';
 import ButtonHighlight from '../widget/ButtonHighlight';
 // redux
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 // actions
-import { addAction, reduceAction, setNumAction1, setNumAction2 } from '../actions/MyAction';
+import {
+	addAction,
+	reduceAction,
+	setNumAction1,
+	setNumAction2,
+} from '../actions/MyAction';
 // style
 import CounterStyle from './style/CounterStyle';
 
@@ -19,21 +21,24 @@ import CounterStyle from './style/CounterStyle';
 	}),
 	dispatch => ({
 		dispatch,
-		...bindActionCreators({
-			addAction,
-			reduceAction,
-			setNumAction1,
-			setNumAction2,
-		}, dispatch),
+		...bindActionCreators(
+			{
+				addAction,
+				reduceAction,
+				setNumAction1,
+				setNumAction2,
+			},
+			dispatch
+		),
 	})
 )
 export default class Counter extends Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 	}
 
 	// 触发 加的动作
-	add = (enable) => {
+	add = enable => {
 		this.props.addAction();
 		enable();
 	};
@@ -55,27 +60,24 @@ export default class Counter extends Component {
 		enable();
 	};
 
-	render () {
+	render() {
 		const { Count } = this.props;
 		return (
 			<View style={CounterStyle.container}>
 				<Text style={CounterStyle.counterTxt}>{Count.num}</Text>
 				<View>
-					<ButtonHighlight
-						title={'+1'}
-						onPress={(enable) => this.add(enable)}
-					/>
+					<ButtonHighlight title={'+1'} onPress={enable => this.add(enable)} />
 					<ButtonHighlight
 						title={'-1'}
-						onPress={(enable) => this.reduce(enable)}
+						onPress={enable => this.reduce(enable)}
 					/>
 					<ButtonHighlight
 						title={'set 999'}
-						onPress={(enable) => this.setNumAction1(enable)}
+						onPress={enable => this.setNumAction1(enable)}
 					/>
 					<ButtonHighlight
 						title={'set 555'}
-						onPress={(enable) => this.setNumAction2(enable)}
+						onPress={enable => this.setNumAction2(enable)}
 					/>
 				</View>
 			</View>
